@@ -1,0 +1,53 @@
+.text {
+  width: 75%;
+  text-align: center;
+  min-height: 300px;
+  position: relative;
+  p {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0;
+    font-family: "Gotham Pro", sans-serif;
+    font-size: 72px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    color: #fff;
+    -webkit-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+}
+
+.clause {
+  opacity: 0;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  transition: all 0.3s;
+  text-align: left;
+}
+
+.word {
+  display: inline-block;
+  position: relative;
+  transform: translateZ(25px);
+  transform-origin: 50% 50% 25px;
+  margin-right: 10px;
+}
+
+.word.out {
+  transform: rotateX(90deg);
+  transition: transform 0.32s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.word.behind {
+  transform: rotateX(-90deg);
+}
+
+.word.in {
+  transform: rotateX(0deg);
+  transition: transform 0.38s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}

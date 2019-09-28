@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import "./Header.scss";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 export const Header = props => {
-  const { t, i18n } = useTranslation();
-  const [langs, setLang] = useState([
+  const initLanguages = [
     {
       key: "ru",
       title: "рус",
@@ -20,14 +19,14 @@ export const Header = props => {
       title: "укр",
       active: false
     }
-  ]);
-  let currentLang = "ru";
+  ];
+  const { t, i18n } = useTranslation();
+  const [langs, setLang] = useState(initLanguages);
 
   const changeLanguage = lng => {
-    currentLang = lng;
     setLang(
       langs.map(lang => {
-        lang.active = lang.key == lng ? true : false;
+        lang.active = lang.key === lng ? true : false;
         return lang;
       })
     );
@@ -36,27 +35,19 @@ export const Header = props => {
 
   return (
     <header>
-      <NavLink className="logo" to="/">
+      <Link className="logo" to="/">
         <img src={`${process.env.PUBLIC_URL}/logo.svg`} alt="" />
-      </NavLink>
+      </Link>
       <nav>
-        <ul>
-          <li>
-            <NavLink activeClassName="active" to="/menu">
-              {t("menu")}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="active" to="/events">
-              {t("events")}
-            </NavLink>
-          </li>
-          <li>
-            <NavLink activeClassName="active" to="/contacts">
-              {t("contacts")}
-            </NavLink>
-          </li>
-        </ul>
+        <NavLink activeClassName="active" to="/menu">
+          {t("menu")}
+        </NavLink>
+        <NavLink activeClassName="active" to="/events">
+          {t("events")}
+        </NavLink>
+        <NavLink activeClassName="active" to="/contacts">
+          {t("contacts")}
+        </NavLink>
       </nav>
       <ul className="header__language">
         {langs.map(lang => (

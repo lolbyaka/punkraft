@@ -13,7 +13,14 @@ header {
     margin: 0;
     li {
       margin: auto 12.5px;
+      &:last-child {
+        margin-right: 0;
+        button {
+          padding-right: 0;
+        }
+      }
       button {
+        padding: 0;
         background: transparent;
         border: none;
         font-family: "Gotham Pro", sans-serif;
@@ -24,13 +31,12 @@ header {
         font-stretch: normal;
         line-height: normal;
         letter-spacing: normal;
-        -webkit-transition: all 0.2s;
-        -o-transition: all 0.2s;
         transition: all 0.2s;
         text-decoration: none;
         opacity: 0.5;
         transition: all 0.3s;
         outline: none;
+        cursor: pointer;
         &.active {
           opacity: 1;
         }
@@ -38,6 +44,7 @@ header {
     }
   }
   .logo {
+    margin-right: 45px;
     img {
     }
   }
@@ -48,36 +55,32 @@ header {
     flex-grow: 3;
     align-items: center;
     margin-left: 45px;
-    ul {
-      list-style-type: none;
-      display: flex;
-      justify-content: flex-start;
-      align-items: center;
-      padding: 0;
-      margin: 0;
-      li {
-        margin: auto 22.5px;
-        &:first-child {
-          margin-left: 0;
-        }
-        &:last-child {
-          margin-right: 0;
-        }
-        a {
-          font-weight: 700;
-          color: #fff;
-          font-size: 20px;
-          font-style: normal;
-          font-stretch: normal;
-          line-height: normal;
-          letter-spacing: normal;
-          transition: all 0.2s;
-          text-decoration: none;
-          transition: all 0.3s;
-          &.active {
-            color: #fb5d31;
-          }
-        }
+    list-style-type: none;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+    a {
+      font-weight: 700;
+      color: #fff;
+      font-size: 20px;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: normal;
+      transition: all 0.2s;
+      text-decoration: none;
+      transition: all 0.3s;
+      margin: auto 22.5px;
+      &:first-child {
+        margin-left: 0;
+      }
+      &:last-child {
+        margin-right: 0;
+      }
+      &.active {
+        color: #fb5d31;
       }
     }
   }

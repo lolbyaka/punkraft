@@ -10,14 +10,9 @@ import { Menu } from "./components/pages/Menu/Menu";
 import { Events } from "./components/pages/Events/Events";
 import { Contacts } from "./components/pages/Contacts/Contacts";
 
-const LangContext = React.createContext({});
-export const LangProvider = LangContext.Provider;
-export const LangConsumer = LangContext.Consumer;
-
 function App() {
-  const lang = "ru";
   return (
-    <LangProvider lang={lang}>
+    <>
       <ContentContainer>
         <Header />
         <Switch>
@@ -28,7 +23,7 @@ function App() {
         </Switch>
       </ContentContainer>
       <BackgroundVideo />
-    </LangProvider>
+    </>
   );
 }
 

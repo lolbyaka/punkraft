@@ -1,0 +1,29 @@
+.home-content {
+  h1 {
+    font-size: 72px;
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    color: #fff;
+    transition: all 0.5s;
+  }
+
+  a {
+    background: #fb5d31;
+    text-decoration: none;
+    width: 282px;
+    height: 65px;
+    display: block;
+    text-align: center;
+    line-height: 65px;
+    font-size: 24px;
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+    letter-spacing: normal;
+    color: #fff;
+    margin-top: 50px;
+  }
+}
