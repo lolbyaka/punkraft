@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Header.scss";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 export const Header = props => {
   const initLanguages = [
@@ -35,9 +35,9 @@ export const Header = props => {
 
   return (
     <header>
-      <Link className="logo" to="/">
+      <NavLink className="logo" activeClassName="active" to="/" exact>
         <img src={`${process.env.PUBLIC_URL}/logo.svg`} alt="" />
-      </Link>
+      </NavLink>
       <nav>
         <NavLink activeClassName="active" to="/menu">
           {t("menu")}

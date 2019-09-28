@@ -45,7 +45,11 @@ header {
   }
   .logo {
     margin-right: 45px;
-    img {
+    &.active {
+      img {
+        filter: invert(0.4) sepia(1) saturate(20) hue-rotate(331.2deg)
+          brightness(1);
+      }
     }
   }
   nav {

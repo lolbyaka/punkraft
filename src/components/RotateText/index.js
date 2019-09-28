@@ -7,7 +7,8 @@ export const RotateText = props => {
   const clausesRef = useRef([]);
   const [currentClause, setClause] = useState(0);
   const [intervalId, setIntervalId] = useState();
-  const r = useRef(null);
+
+  const r = useRef(null); // TODO: fix setInterval hooks in better way (add useInterval hook)
   r.current = { currentClause, setClause };
 
   useEffect(() => {
