@@ -6,7 +6,8 @@ class rotateText {
     intervalId,
     setIntervalId,
     clauseArray,
-    clasesRef
+    clasesRef,
+    selectedWords
   ) {
     this.clauseArray = clauseArray;
     this.clausesRef = clasesRef;
@@ -15,6 +16,7 @@ class rotateText {
     this.setClause = setClause;
     this.intervalId = intervalId;
     this.setIntervalId = setIntervalId;
+    this.selectedWords = selectedWords;
     this.init(r, currentClause, setClause, intervalId, setIntervalId);
   }
 
@@ -46,7 +48,12 @@ class rotateText {
     }
 
     for (let i = 0; i < nc.length; i++) {
-      nc[i].className = "word behind";
+      nc[i].className = this.selectedWords[r.current.currentClause].includes(
+        nc[i].textContent
+      )
+        ? "word behind accent"
+        : "word behind";
+      //nc[i].className = "word behind";
       nc[0].parentElement.style.opacity = 1;
       this.animateWordIn(nc, i);
     }
@@ -57,14 +64,35 @@ class rotateText {
   };
 
   animateWordOut = (cc, i) => {
+    const vm = this;
     setTimeout(function() {
-      cc[i].className = "word out";
+      let switchIndex = 0;
+      if (
+        vm.r.current.currentClause - 1 !== vm.clauseArray.length &&
+        vm.r.current.currentClause !== 0
+      ) {
+        switchIndex = vm.r.current.currentClause - 1;
+      } else if (vm.r.current.currentClause === 0) {
+        switchIndex = vm.clauseArray.length - 1;
+      } else {
+        switchIndex = 0;
+      }
+      cc[i].className = vm.selectedWords[switchIndex].includes(
+        cc[i].textContent
+      )
+        ? "word out accent"
+        : "word out";
     }, i * 40);
   };
 
   animateWordIn = (nc, i) => {
+    const vm = this;
     setTimeout(function() {
-      nc[i].className = "word in";
+      nc[i].className = vm.selectedWords[vm.r.current.currentClause].includes(
+        nc[i].textContent
+      )
+        ? "word in accent"
+        : "word in";
     }, 340 + i * 40);
   };
 
@@ -74,8 +102,14 @@ class rotateText {
     var words = [];
     for (var i = 0; i < content.split(" ").length; i++) {
       var word = document.createElement("span");
-      word.className = "word";
-      word.innerHTML = content.split(" ")[i];
+      var text = content.split(" ")[i];
+
+      word.className = this.selectedWords[
+        this.r.current.currentClause
+      ].includes(text)
+        ? "word accent"
+        : "word";
+      word.innerHTML = text;
       clause.appendChild(word);
       words.push(word);
     }

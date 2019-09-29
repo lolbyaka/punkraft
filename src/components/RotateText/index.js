@@ -19,17 +19,32 @@ export const RotateText = props => {
       intervalId,
       setIntervalId,
       clauseArray,
-      clausesRef
+      clausesRef,
+      props.selectedWords
     );
   }, [props.clauses]);
 
   return (
-    <div className="text">
-      {props.clauses.map((clause, i) => (
-        <p key={i} ref={el => (clausesRef.current[i] = el)} className="clause">
-          {clause}
-        </p>
-      ))}
-    </div>
+    <>
+      <div className="text">
+        {props.clauses.map((clause, i) => (
+          <p
+            key={i}
+            ref={el => (clausesRef.current[i] = el)}
+            className="clause"
+          >
+            {clause}
+          </p>
+        ))}
+        <div className="dots">
+          {props.clauses.map((clause, i) => (
+            <div
+              key={i}
+              className={i == currentClause ? "active dot" : "dot"}
+            ></div>
+          ))}
+        </div>
+      </div>
+    </>
   );
 };

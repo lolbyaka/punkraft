@@ -3,9 +3,14 @@ const messages = {
   events: "Events",
   contacts: "Contacts",
   titles: [
-    "Bar of craft Ukrainian and imported beer",
-    "EN Бар крафтового украинского и мпортного пива 2",
-    "EN Бар крафтового украинского и мпортного пива 3"
+    "We are craft beer bar in the heart of Kyiv with wide selection of beer.",
+    "24 taps of draft beer and rich range of bottled one.",
+    "Burgers, meat, fish, chips and other beer accompanying appetizers."
+  ],
+  selectedWords: [
+    ["craft", "beer", "bar"],
+    ["24", "taps"],
+    ["beer", "accompaning"]
   ]
 };
 
