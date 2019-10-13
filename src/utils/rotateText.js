@@ -24,8 +24,6 @@ export const changeClause = (
   setClause,
   clauseArray,
   selectedWords,
-  prevClause,
-  setPrevClause,
   nextClause
 ) => {
   var cc = clauseArray[currentClause];
@@ -35,13 +33,9 @@ export const changeClause = (
     currentClause === clausesLenght - 1
       ? clauseArray[0]
       : clauseArray[currentClause + 1];
-  if (isN) {
+  if (isN && nextClause) {
     nc = clauseArray[nextClause];
   }
-  if (nextClause) {
-    nc = clauseArray[nextClause];
-  }
-  setPrevClause(currentClause);
 
   for (var i = 0; i < cc.length; i++) {
     animateWord(cc[i], selectedWords[currentClause], "out", i * 40);

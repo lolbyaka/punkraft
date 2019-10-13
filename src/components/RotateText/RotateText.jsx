@@ -7,49 +7,44 @@ export const RotateText = ({ clauses, selectedWords }) => {
   const [clauseArray, setClauseArray] = useState([]);
   const [currentClause, setClause] = useState(0);
   const [intervalId, setIntervalId] = useState();
-  const [prevClause, setPrevClause] = useState(0);
 
   const r = useRef(null);
   r.current = {
     intervalId,
     currentClause,
     setClause,
-    prevClause,
-    setPrevClause,
     clauseArray
   };
 
   useEffect(() => {
-    setClauseArray([]);
     if (clausesRef.current[currentClause].childElementCount > 1) return;
     setClauseArray(
       clausesRef.current.map((item, i) => {
-        item.style.opacity = 0;
-        const words = splitClause(item, selectedWords[currentClause]);
-        return words;
+        item.style.opacity = i === 0 ? 1 : 0;
+        return splitClause(item, selectedWords[currentClause]);
       })
     );
-    for (var i = 0; i < clausesRef.current.length; i++) {}
 
-    clausesRef.current[currentClause].style.opacity = 1;
-
-    const id = setInterval(() => {
-      changeClause(
-        clausesRef.current.length,
-        r.current.currentClause,
-        setClause,
-        r.current.clauseArray,
-        selectedWords,
-        r.current.prevClause,
-        setPrevClause
-      );
-    }, 3000);
-    setIntervalId(id);
+    changeClause();
 
     return () => {
       clearInterval(r.current.intervalId);
     };
   }, [clauses]);
+
+  const changeClause = () => {
+    setIntervalId(
+      setInterval(() => {
+        changeClause(
+          clausesRef.current.length,
+          r.current.currentClause,
+          setClause,
+          r.current.clauseArray,
+          selectedWords
+        );
+      }, 3000)
+    );
+  };
 
   const changeNextClause = nextIndex => {
     if (r.current.currentClause !== nextIndex) {
@@ -60,22 +55,10 @@ export const RotateText = ({ clauses, selectedWords }) => {
         setClause,
         r.current.clauseArray,
         selectedWords,
-        r.current.prevClause,
-        setPrevClause,
         nextIndex
       );
-      const id = setInterval(() => {
-        changeClause(
-          clausesRef.current.length,
-          r.current.currentClause,
-          setClause,
-          r.current.clauseArray,
-          selectedWords,
-          r.current.prevClause,
-          setPrevClause
-        );
-      }, 3000);
-      setIntervalId(id);
+
+      changeClause();
     }
   };
 
@@ -95,7 +78,7 @@ export const RotateText = ({ clauses, selectedWords }) => {
           {clauses.map((clause, i) => (
             <div
               key={i}
-              className={i == currentClause ? "active dot" : "dot"}
+              className={i === currentClause ? "active dot" : "dot"}
               onClick={e => {
                 changeNextClause(i);
               }}
