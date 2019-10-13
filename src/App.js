@@ -5,6 +5,7 @@ import "./App.scss";
 import BackgroundVideo from "./components/BackgroundVideo/BackgroundVideo";
 import ContentContainer from "./components/ContentContainer/ContentContainer";
 import { Header } from "./components/Header/Header";
+import { Footer } from "./components/Footer/Footer.jsx";
 import { Home } from "./components/pages/Home/Home";
 import { Menu } from "./components/pages/Menu/Menu";
 import { Events } from "./components/pages/Events/Events";
@@ -21,6 +22,7 @@ function App() {
           <Route path="/events" component={Events} />
           <Route path="/contacts" component={Contacts} />
         </Switch>
+        <Footer />
       </ContentContainer>
       <BackgroundVideo />
     </>
