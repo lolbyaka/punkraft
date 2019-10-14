@@ -25,14 +25,14 @@ export const RotateText = ({ clauses, selectedWords }) => {
       })
     );
 
-    changeClause();
+    changeClauseX();
 
     return () => {
       clearInterval(r.current.intervalId);
     };
   }, [clauses]);
 
-  const changeClause = () => {
+  const changeClauseX = () => {
     setIntervalId(
       setInterval(() => {
         changeClause(
@@ -49,16 +49,7 @@ export const RotateText = ({ clauses, selectedWords }) => {
   const changeNextClause = nextIndex => {
     if (r.current.currentClause !== nextIndex) {
       clearInterval(r.current.intervalId);
-      changeClause(
-        clausesRef.current.length,
-        r.current.currentClause,
-        setClause,
-        r.current.clauseArray,
-        selectedWords,
-        nextIndex
-      );
-
-      changeClause();
+      changeClauseX();
     }
   };
 
@@ -78,7 +69,7 @@ export const RotateText = ({ clauses, selectedWords }) => {
           {clauses.map((clause, i) => (
             <div
               key={i}
-              className={i === currentClause ? "active dot" : "dot"}
+              className={i == currentClause ? "active dot" : "dot"}
               onClick={e => {
                 changeNextClause(i);
               }}

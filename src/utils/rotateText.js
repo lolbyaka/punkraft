@@ -23,54 +23,34 @@ export const changeClause = (
   currentClause,
   setClause,
   clauseArray,
-  selectedWords,
-  nextClause
+  selectedWords
 ) => {
   var cc = clauseArray[currentClause];
-
-  let isN = nextClause === 0 ? true : false;
   var nc =
     currentClause === clausesLenght - 1
       ? clauseArray[0]
       : clauseArray[currentClause + 1];
-  if (isN && nextClause) {
-    nc = clauseArray[nextClause];
-  }
 
-  for (var i = 0; i < cc.length; i++) {
-    animateWord(cc[i], selectedWords[currentClause], "out", i * 40);
-  }
+  cc.map((item, i) => {
+    animateWord(item, selectedWords[currentClause], "out", i * 40);
+  });
 
-  for (let i = 0; i < nc.length; i++) {
-    nc[i].className = selectedWords[
-      nextClause ? nextClause : currentClause
-    ].includes(nc[i].textContent)
+  nc.map((item, i) => {
+    item.className = selectedWords[currentClause].includes(item.textContent)
       ? "word behind accent"
       : "word behind";
-    nc[0].parentElement.style.opacity = 1;
+    item.parentElement.style.opacity = 1;
     animateWord(
-      nc[i],
+      item,
       selectedWords[
-        nextClause
-          ? nextClause
-          : currentClause !== clausesLenght - 1
-          ? currentClause + 1
-          : 0
+        currentClause !== clausesLenght - 1 ? currentClause + 1 : 0
       ],
       "in",
       340 + i * 40
     );
-  }
+  });
 
   setClause(curClause => {
-    if (isN) {
-      return nextClause;
-    } else {
-      return nextClause
-        ? nextClause
-        : curClause === clauseArray.length - 1
-        ? 0
-        : curClause + 1;
-    }
+    return curClause === clauseArray.length - 1 ? 0 : curClause + 1;
   });
 };
