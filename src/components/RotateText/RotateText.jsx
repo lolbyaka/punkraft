@@ -25,14 +25,25 @@ export const RotateText = ({ clauses, selectedWords }) => {
       })
     );
 
-    changeClauseX();
+    changeNextClause(0);
 
     return () => {
       clearInterval(r.current.intervalId);
     };
   }, [clauses]);
 
-  const changeClauseX = () => {
+  const changeNextClause = nextIndex => {
+    if (r.current.currentClause !== nextIndex) {
+      clearInterval(r.current.intervalId);
+      changeClause(
+        clausesRef.current.length,
+        r.current.currentClause,
+        setClause,
+        r.current.clauseArray,
+        selectedWords,
+        nextIndex
+      );
+    }
     setIntervalId(
       setInterval(() => {
         changeClause(
@@ -44,13 +55,6 @@ export const RotateText = ({ clauses, selectedWords }) => {
         );
       }, 3000)
     );
-  };
-
-  const changeNextClause = nextIndex => {
-    if (r.current.currentClause !== nextIndex) {
-      clearInterval(r.current.intervalId);
-      changeClauseX();
-    }
   };
 
   return (

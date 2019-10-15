@@ -23,13 +23,17 @@ export const changeClause = (
   currentClause,
   setClause,
   clauseArray,
-  selectedWords
+  selectedWords,
+  nextIndex
 ) => {
-  var cc = clauseArray[currentClause];
-  var nc =
-    currentClause === clausesLenght - 1
-      ? clauseArray[0]
-      : clauseArray[currentClause + 1];
+  const clauseIndex =
+    nextIndex >= 0
+      ? nextIndex
+      : currentClause === clausesLenght - 1
+      ? 0
+      : currentClause + 1;
+  const cc = clauseArray[currentClause];
+  const nc = clauseArray[clauseIndex];
 
   cc.map((item, i) => {
     animateWord(item, selectedWords[currentClause], "out", i * 40);
@@ -40,17 +44,8 @@ export const changeClause = (
       ? "word behind accent"
       : "word behind";
     item.parentElement.style.opacity = 1;
-    animateWord(
-      item,
-      selectedWords[
-        currentClause !== clausesLenght - 1 ? currentClause + 1 : 0
-      ],
-      "in",
-      340 + i * 40
-    );
+    animateWord(item, selectedWords[clauseIndex], "in", 340 + i * 40);
   });
 
-  setClause(curClause => {
-    return curClause === clauseArray.length - 1 ? 0 : curClause + 1;
-  });
+  setClause(clauseIndex);
 };
