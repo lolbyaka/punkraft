@@ -8,8 +8,8 @@ export const RotateText = ({ clauses, selectedWords }) => {
   const [currentClause, setClause] = useState(0);
   const [intervalId, setIntervalId] = useState();
 
-  const r = useRef(null);
-  r.current = {
+  const mutateRef = useRef(null);
+  mutateRef.current = {
     intervalId,
     currentClause,
     setClause,
@@ -25,33 +25,33 @@ export const RotateText = ({ clauses, selectedWords }) => {
       })
     );
 
-    changeNextClause(0);
+    changeNextClause(currentClause);
 
     return () => {
-      clearInterval(r.current.intervalId);
+      clearInterval(mutateRef.current.intervalId);
     };
   }, [clauses]);
 
   const changeNextClause = nextIndex => {
-    if (r.current.currentClause !== nextIndex) {
-      clearInterval(r.current.intervalId);
-      changeClause(
-        clausesRef.current.length,
-        r.current.currentClause,
-        setClause,
-        r.current.clauseArray,
-        selectedWords,
-        nextIndex
+    if (mutateRef.current.currentClause !== nextIndex) {
+      clearInterval(mutateRef.current.intervalId);
+      setClause(
+        changeClause(
+          clausesRef.current.length,
+          mutateRef.current,
+          selectedWords,
+          nextIndex
+        )
       );
     }
     setIntervalId(
       setInterval(() => {
-        changeClause(
-          clausesRef.current.length,
-          r.current.currentClause,
-          setClause,
-          r.current.clauseArray,
-          selectedWords
+        setClause(
+          changeClause(
+            clausesRef.current.length,
+            mutateRef.current,
+            selectedWords
+          )
         );
       }, 3000)
     );
@@ -73,9 +73,9 @@ export const RotateText = ({ clauses, selectedWords }) => {
           {clauses.map((clause, i) => (
             <div
               key={i}
-              className={i == currentClause ? "active dot" : "dot"}
+              className={i === currentClause ? "active dot" : "dot"}
               onClick={e => {
-                changeNextClause(i);
+                currentClause !== i && changeNextClause(i);
               }}
             ></div>
           ))}
