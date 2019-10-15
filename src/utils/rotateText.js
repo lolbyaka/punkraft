@@ -20,7 +20,7 @@ export const splitClause = (clause, selectedWords) => {
 
 export const changeClause = (
   clausesLenght,
-  { clauseArray, currentClause },
+  { clausesArray, currentClause },
   selectedWords,
   nextIndex
 ) => {
@@ -30,19 +30,19 @@ export const changeClause = (
       : currentClause === clausesLenght - 1
       ? 0
       : currentClause + 1;
-  const cc = clauseArray[currentClause];
-  const nc = clauseArray[clauseIndex];
+  const currentClauseArray = clausesArray[currentClause];
+  const nextClauseArray = clausesArray[clauseIndex];
 
-  cc.forEach((item, i) => {
-    animateWord(item, selectedWords[currentClause], "out", i * 40);
+  currentClauseArray.forEach((word, i) => {
+    animateWord(word, selectedWords[currentClause], "out", i * 40);
   });
 
-  nc.forEach((item, i) => {
-    item.className = selectedWords[currentClause].includes(item.textContent)
+  nextClauseArray.forEach((word, i) => {
+    word.className = selectedWords[currentClause].includes(word.textContent)
       ? "word behind accent"
       : "word behind";
-    item.parentElement.style.opacity = 1;
-    animateWord(item, selectedWords[clauseIndex], "in", 340 + i * 40);
+    word.parentElement.style.opacity = 1;
+    animateWord(word, selectedWords[clauseIndex], "in", 340 + i * 40);
   });
 
   return clauseIndex;

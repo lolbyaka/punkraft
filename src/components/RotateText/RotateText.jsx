@@ -4,7 +4,7 @@ import "./RotateText.scss";
 
 export const RotateText = ({ clauses, selectedWords }) => {
   const clausesRef = useRef([]);
-  const [clauseArray, setClauseArray] = useState([]);
+  const [clausesArray, setClausesArray] = useState([]);
   const [currentClause, setClause] = useState(0);
   const [intervalId, setIntervalId] = useState();
 
@@ -13,12 +13,12 @@ export const RotateText = ({ clauses, selectedWords }) => {
     intervalId,
     currentClause,
     setClause,
-    clauseArray
+    clausesArray
   };
 
   useEffect(() => {
     if (clausesRef.current[currentClause].childElementCount > 1) return;
-    setClauseArray(
+    setClausesArray(
       clausesRef.current.map((item, i) => {
         item.style.opacity = i === 0 ? 1 : 0;
         return splitClause(item, selectedWords[currentClause]);
