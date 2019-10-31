@@ -1,17 +1,25 @@
-import React, { useEffect, useContext, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { MenuList } from "../../MenuList/MenuList";
-import { MenuFilter } from "../../MenuFilter/MenuFilter";
-import "./Menu.scss";
-import { PunkraftContext } from "../../../App";
-import { loadMenu, loadFilters } from "../../../api/json/menu";
-import { DashLoading } from "respinner";
+import React, { useEffect, useContext, useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import { DashLoading } from 'respinner';
+import MenuList from '../../MenuList/MenuList';
+import MenuFilter from '../../MenuFilter/MenuFilter';
+import './Menu.scss';
+import { PunkraftContext } from '../../../App';
+import { loadMenu, loadFilters } from '../../../api/json/menu';
 
-export const Menu = () => {
+const Menu = () => {
   const { t } = useTranslation();
   const { toggleVideo, toggleLines } = useContext(PunkraftContext);
   const [menu, setMenu] = useState(null);
   const [filters, setFilters] = useState(null);
+
+  const toggleFilter = filterKey => {
+    setFilters(
+      filters.map(filter => {
+        return { ...filter, active: filter.key === filterKey };
+      })
+    );
+  };
 
   useEffect(() => {
     toggleVideo(false);
@@ -23,26 +31,18 @@ export const Menu = () => {
   }, []);
 
   useEffect(() => {
-    filters && filters && toggleFilter("beer");
+    if (filters) {
+      toggleFilter('beer');
+    }
   }, [menu]);
 
   const returnActiveFilter = () => filters.filter(item => item.active)[0];
 
-  const toggleFilter = filterKey => {
-    setFilters(
-      filters.map(filter => {
-        return { ...filter, active: filter.key === filterKey ? true : false };
-      })
-    );
-  };
-
   return (
     <div className="menu-container">
       <h1>
-        {t("menu")}{" "}
-        {!filters && !menu && (
-          <DashLoading size={40} stroke="#fb5d31" duration={1.6} />
-        )}
+        {t('menu')}
+        {!filters && !menu && <DashLoading size={40} stroke="#fb5d31" duration={1.6} />}
       </h1>
       {filters && menu && (
         <>
@@ -53,3 +53,5 @@ export const Menu = () => {
     </div>
   );
 };
+
+export { Menu as default };

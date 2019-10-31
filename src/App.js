@@ -1,15 +1,15 @@
-import React, { useState } from "react";
-import { Switch, Route } from "react-router-dom";
-import "./App.scss";
+import React, { useState } from 'react';
+import { Switch, Route } from 'react-router-dom';
+import './App.scss';
 
-import BackgroundVideo from "./components/BackgroundVideo/BackgroundVideo";
-import ContentContainer from "./components/ContentContainer/ContentContainer";
-import { Header } from "./components/Header/Header";
-import { Footer } from "./components/Footer/Footer.jsx";
-import { Home } from "./components/pages/Home/Home";
-import { Menu } from "./components/pages/Menu/Menu";
-import { Events } from "./components/pages/Events/Events";
-import { Contacts } from "./components/pages/Contacts/Contacts";
+import BackgroundVideo from './components/BackgroundVideo/BackgroundVideo';
+import ContentContainer from './components/ContentContainer/ContentContainer';
+import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
+import Home from './components/pages/Home/Home';
+import Menu from './components/pages/Menu/Menu';
+import Events from './components/pages/Events/Events';
+import Contacts from './components/pages/Contacts/Contacts';
 
 export const PunkraftContext = React.createContext(null);
 
@@ -26,9 +26,7 @@ function App() {
   };
 
   return (
-    <PunkraftContext.Provider
-      value={{ video, lines, toggleVideo, toggleLines }}
-    >
+    <PunkraftContext.Provider value={{ video, lines, toggleVideo, toggleLines }}>
       <ContentContainer>
         <Header />
         <Switch>

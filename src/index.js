@@ -1,10 +1,10 @@
-import React from "react";
-import { render } from "react-dom";
-import { BrowserRouter } from "react-router-dom";
-import { I18nextProvider } from "react-i18next";
-import "./index.scss";
-import App from "./App";
-import i18n from "./i18n";
+import React from 'react';
+import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
+import { I18nextProvider } from 'react-i18next';
+import './index.scss';
+import App from './App';
+import i18n from './i18n';
 
 render(
   <BrowserRouter>
@@ -12,5 +12,5 @@ render(
       <App />
     </I18nextProvider>
   </BrowserRouter>,
-  document.getElementById("root")
+  document.getElementById('root')
 );

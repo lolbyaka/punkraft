@@ -1,6 +1,6 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect } from 'react';
 
-export function useEventListener(eventName, handler, element = window) {
+const useEventListener = (eventName, handler, element = window) => {
   const savedHandler = useRef();
 
   useEffect(() => {
@@ -14,8 +14,11 @@ export function useEventListener(eventName, handler, element = window) {
     const eventListener = event => savedHandler.current(event);
 
     element.addEventListener(eventName, eventListener);
+    // eslint-disable-next-line consistent-return
     return () => {
       element.removeEventListener(eventName, eventListener);
     };
   }, [eventName, element]);
-}
+};
+
+export { useEventListener as default };

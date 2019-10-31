@@ -1,22 +1,23 @@
-import React, { useState } from "react";
-import "./Header.scss";
-import { NavLink } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-export const Header = props => {
+import React, { useState } from 'react';
+import './Header.scss';
+import { NavLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+
+const Header = () => {
   const initLanguages = [
     {
-      key: "ru",
-      title: "рус",
+      key: 'ru',
+      title: 'рус',
       active: true
     },
     {
-      key: "en",
-      title: "eng",
+      key: 'en',
+      title: 'eng',
       active: false
     },
     {
-      key: "ua",
-      title: "укр",
+      key: 'ua',
+      title: 'укр',
       active: false
     }
   ];
@@ -26,8 +27,7 @@ export const Header = props => {
   const changeLanguage = lng => {
     setLang(
       langs.map(lang => {
-        lang.active = lang.key === lng ? true : false;
-        return lang;
+        return { ...lang, active: lang.key === lng };
       })
     );
     i18n.changeLanguage(lng);
@@ -40,20 +40,22 @@ export const Header = props => {
       </NavLink>
       <nav>
         <NavLink activeClassName="active" to="/menu">
-          {t("menu")}
+          {t('menu')}
         </NavLink>
         <NavLink activeClassName="active" to="/events">
-          {t("events")}
+          {t('events')}
         </NavLink>
         <NavLink activeClassName="active" to="/contacts">
-          {t("contacts")}
+          {t('contacts')}
         </NavLink>
       </nav>
       <ul className="header__language">
         {langs.map(lang => (
           <li key={lang.key}>
             <button
-              className={lang.active ? "active" : ""}
+              type="button"
+              tabIndex="0"
+              className={lang.active ? 'active' : ''}
               onClick={() => changeLanguage(lang.key)}
             >
               {lang.title}
@@ -64,3 +66,5 @@ export const Header = props => {
     </header>
   );
 };
+
+export { Header as default };

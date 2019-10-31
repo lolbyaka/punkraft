@@ -1,8 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { splitClause, changeClause } from "../../utils/rotateText";
-import "./RotateText.scss";
+/* eslint-disable no-return-assign */
+import React, { useEffect, useState, useRef } from 'react';
+import { splitClause, changeClause } from '../../utils/rotateText';
+import './RotateText.scss';
 
-export const RotateText = ({ clauses, selectedWords }) => {
+const RotateText = ({ clauses, selectedWords }) => {
   const clausesRef = useRef([]);
   const [clausesArray, setClausesArray] = useState([]);
   const [currentClause, setClause] = useState(0);
@@ -16,6 +17,20 @@ export const RotateText = ({ clauses, selectedWords }) => {
     clausesArray
   };
 
+  const changeNextClause = nextIndex => {
+    if (mutateRef.current.currentClause !== nextIndex) {
+      clearInterval(mutateRef.current.intervalId);
+      setClause(
+        changeClause(clausesRef.current.length, mutateRef.current, selectedWords, nextIndex)
+      );
+    }
+    setIntervalId(
+      setInterval(() => {
+        setClause(changeClause(clausesRef.current.length, mutateRef.current, selectedWords));
+      }, 3000)
+    );
+  };
+
   useEffect(() => {
     if (clausesRef.current[currentClause].childElementCount > 1) return;
     setClausesArray(
@@ -27,45 +42,23 @@ export const RotateText = ({ clauses, selectedWords }) => {
 
     changeNextClause(currentClause);
 
+    // eslint-disable-next-line consistent-return
     return () => {
       clearInterval(mutateRef.current.intervalId);
     };
   }, [clauses]);
 
-  const changeNextClause = nextIndex => {
-    if (mutateRef.current.currentClause !== nextIndex) {
-      clearInterval(mutateRef.current.intervalId);
-      setClause(
-        changeClause(
-          clausesRef.current.length,
-          mutateRef.current,
-          selectedWords,
-          nextIndex
-        )
-      );
+  const nextClause = () => {
+    if (currentClause !== i) {
+      changeNextClause(i);
     }
-    setIntervalId(
-      setInterval(() => {
-        setClause(
-          changeClause(
-            clausesRef.current.length,
-            mutateRef.current,
-            selectedWords
-          )
-        );
-      }, 3000)
-    );
   };
 
   return (
     <>
       <div className="text">
         {clauses.map((clause, i) => (
-          <p
-            key={i}
-            ref={el => (clausesRef.current[i] = el)}
-            className="clause"
-          >
+          <p key={i} ref={el => (clausesRef.current[i] = el)} className="clause">
             {clause}
           </p>
         ))}
@@ -73,14 +66,18 @@ export const RotateText = ({ clauses, selectedWords }) => {
           {clauses.map((clause, i) => (
             <div
               key={i}
-              className={i === currentClause ? "active dot" : "dot"}
-              onClick={e => {
-                currentClause !== i && changeNextClause(i);
-              }}
-            ></div>
+              role="button"
+              tabIndex="0"
+              aria-label={`To slide ${i}`}
+              onKeyDown={nextClause()}
+              className={i === currentClause ? 'active dot' : 'dot'}
+              onClick={nextClause()}
+            />
           ))}
         </div>
       </div>
     </>
   );
 };
+
+export { RotateText as default };

@@ -1,6 +1,6 @@
-import enMessages from "./locales/en";
-import ruMessages from "./locales/ru";
-import uaMessages from "./locales/ua";
+import enMessages from './locales/en';
+import ruMessages from './locales/ru';
+import uaMessages from './locales/ua';
 
 export default {
   en: {

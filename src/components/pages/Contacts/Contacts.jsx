@@ -1,11 +1,13 @@
-import React from "react";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-export const Contacts = props => {
+const Contacts = () => {
   const { t } = useTranslation();
   return (
     <div>
-      <h1>{t("contacts")}</h1>
+      <h1>{t('contacts')}</h1>
     </div>
   );
 };
+
+export { Contacts as default };
