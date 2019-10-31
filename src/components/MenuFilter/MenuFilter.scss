@@ -1,0 +1,45 @@
+.icon {
+  height: 70px;
+  width: 100px;
+  position: absolute;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  background-color: #fff;
+  opacity: 0.2;
+  transition: all ease 0.2s;
+  &.active {
+    opacity: 1;
+    background-color: #fb5d31;
+  }
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+}
+
+.filter {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  margin-bottom: 70px;
+  &__item {
+    position: relative;
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 30px;
+    line-height: 29px;
+    color: #ffffff;
+    margin-right: 65px;
+    cursor: pointer;
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

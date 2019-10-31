@@ -1,0 +1,110 @@
+.menu-container {
+  margin-top: 0;
+  margin-bottom: auto;
+  h1 {
+    margin-top: 40px;
+    margin-bottom: 58px;
+    font-family: Gotham Pro;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 72px;
+    line-height: 69px;
+    color: #ffffff;
+  }
+}
+
+.menu-container {
+  position: relative;
+}
+.menu-icon {
+  height: 585px;
+  width: 585px;
+  position: absolute;
+  -webkit-mask-position: center right;
+  mask-position: center;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  right: 0;
+  opacity: 0.1;
+  top: 0;
+  transform: translateX(50%);
+  z-index: 0;
+  background-color: #fff;
+  transition: all ease 0.2s;
+}
+.loader {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 150px 0;
+}
+.menu-list {
+  position: relative;
+  display: grid;
+  grid-row-gap: 40px;
+  grid-column-gap: 95px;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-auto-rows: 0;
+}
+
+.menu-item {
+  .content {
+    color: #000;
+    font-weight: 500;
+    font-size: 25px;
+  }
+  .item-title {
+    font-family: "Gotham Narrow";
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 23px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #ffffff;
+    position: relative;
+    margin-bottom: 35px;
+
+    &::after {
+      content: "";
+      display: block;
+      position: relative;
+      width: 35px;
+      height: 2px;
+      background: #fb5d31;
+      margin-top: 5px;
+    }
+  }
+  .item-position {
+    margin-bottom: 25px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  h2 {
+    display: flex;
+    justify-content: space-between;
+    font-family: "Gotham Narrow";
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #7a7a7a;
+    margin: 0;
+    margin-bottom: 10px;
+    span {
+      color: #efefef;
+      font-weight: 700;
+    }
+    padding-bottom: 10px;
+    border-bottom: 1px solid #252525;
+  }
+  p {
+    font-family: "Gotham Pro";
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #393939;
+    margin: 0;
+  }
+}

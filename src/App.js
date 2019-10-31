@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route } from "react-router-dom";
 import "./App.scss";
 
@@ -11,9 +11,24 @@ import { Menu } from "./components/pages/Menu/Menu";
 import { Events } from "./components/pages/Events/Events";
 import { Contacts } from "./components/pages/Contacts/Contacts";
 
+export const PunkraftContext = React.createContext(null);
+
 function App() {
+  const [video, setVideo] = useState(true);
+  const [lines, setLines] = useState(true);
+
+  const toggleVideo = value => {
+    setVideo(value);
+  };
+
+  const toggleLines = value => {
+    setLines(value);
+  };
+
   return (
-    <>
+    <PunkraftContext.Provider
+      value={{ video, lines, toggleVideo, toggleLines }}
+    >
       <ContentContainer>
         <Header />
         <Switch>
@@ -25,7 +40,7 @@ function App() {
         <Footer />
       </ContentContainer>
       <BackgroundVideo />
-    </>
+    </PunkraftContext.Provider>
   );
 }
 
