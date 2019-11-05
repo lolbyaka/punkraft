@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import PropTypes from 'prop-types';
 import { splitClause, changeClause } from '../../utils/rotateText';
-import './RotateText.scss';
+import './styles.scss';
 
 const RotateText = ({ clauses, selectedWords }) => {
   const clausesRef = useRef([]);

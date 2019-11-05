@@ -1,6 +1,6 @@
 import React from 'react';
 import { animated, useTrail } from 'react-spring';
-import './MenuFilter.scss';
+import './styles.scss';
 
 const MenuFilter = ({ filters, toggleFilter }) => {
   const trail = useTrail(filters.length, {

@@ -3,7 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { DashLoading } from 'respinner';
 import MenuList from '../../MenuList';
 import MenuFilter from '../../MenuFilter';
-import './Menu.scss';
+import './styles.scss';
 import { usePunkraftBackground } from '../../../utils/hooks/backgroundContext';
 import { loadMenu, loadFilters } from '../../../api/json/menu';
 

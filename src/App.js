@@ -5,10 +5,10 @@ import BackgroundVideo from './components/BackgroundVideo';
 import ContentContainer from './components/ContentContainer';
 import Header from './components/Header';
 import Footer from './components/Footer';
-import Home from './components/pages/Home';
-import Menu from './components/pages/Menu';
-import Events from './components/pages/Events';
-import Contacts from './components/pages/Contacts';
+import Home from './components/Pages/Home';
+import Menu from './components/Pages/Menu';
+import Events from './components/Pages/Events';
+import Contacts from './components/Pages/Contacts';
 
 const App = () => {
   const [video, setVideo] = useState(true);
@@ -40,6 +40,6 @@ const App = () => {
       <BackgroundVideo />
     </PunkraftBackgroundCtx.Provider>
   );
-}
+};
 
 export default App;

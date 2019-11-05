@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './Header.scss';
+import './styles.scss';
 import { NavLink } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 

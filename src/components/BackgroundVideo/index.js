@@ -1,5 +1,5 @@
 import React from 'react';
-import './BackgroundVideo.scss';
+import './styles.scss';
 import { usePunkraftBackground } from '../../utils/hooks/backgroundContext';
 
 const BackgroundVideo = () => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import './Home.scss';
+import './styles.scss';
 import { useTranslation } from 'react-i18next';
 import RotateText from '../../RotateText';
 import { usePunkraftBackground } from '../../../utils/hooks/backgroundContext';
