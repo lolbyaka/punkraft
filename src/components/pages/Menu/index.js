@@ -1,24 +1,20 @@
-import React, { useEffect, useContext, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { DashLoading } from 'respinner';
-import MenuList from '../../MenuList/MenuList';
-import MenuFilter from '../../MenuFilter/MenuFilter';
+import MenuList from '../../MenuList';
+import MenuFilter from '../../MenuFilter';
 import './Menu.scss';
-import { PunkraftContext } from '../../../App';
+import { usePunkraftBackground } from '../../../utils/hooks/backgroundContext';
 import { loadMenu, loadFilters } from '../../../api/json/menu';
 
 const Menu = () => {
   const { t } = useTranslation();
-  const { toggleVideo, toggleLines } = useContext(PunkraftContext);
+  const { toggleVideo, toggleLines } = usePunkraftBackground();
   const [menu, setMenu] = useState(null);
   const [filters, setFilters] = useState(null);
 
-  const toggleFilter = filterKey => {
-    setFilters(
-      filters.map(filter => {
-        return { ...filter, active: filter.key === filterKey };
-      })
-    );
+  const toggleFilter = (filterKey) => {
+    setFilters(filters.map((filter) => ({ ...filter, active: filter.key === filterKey })));
   };
 
   useEffect(() => {
@@ -36,7 +32,7 @@ const Menu = () => {
     }
   }, [menu]);
 
-  const returnActiveFilter = () => filters.filter(item => item.active)[0];
+  const returnActiveFilter = () => filters.filter((item) => item.active)[0];
 
   return (
     <div className="menu-container">

@@ -1,13 +1,13 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useEffect } from 'react';
 import './Home.scss';
 import { useTranslation } from 'react-i18next';
-import RotateText from '../../RotateText/RotateText';
-import { PunkraftContext } from '../../../App';
+import RotateText from '../../RotateText';
+import { usePunkraftBackground } from '../../../utils/hooks/backgroundContext';
 
 const Home = () => {
   const { t } = useTranslation();
   const selectedWords = t('selectedWords', { returnObjects: true });
-  const { toggleVideo, toggleLines } = useContext(PunkraftContext);
+  const { toggleVideo, toggleLines } = usePunkraftBackground();
   useEffect(() => {
     toggleVideo(true);
     toggleLines(true);

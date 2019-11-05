@@ -4,12 +4,12 @@ import uaMessages from './locales/ua';
 
 export default {
   en: {
-    translation: enMessages
+    translation: enMessages,
   },
   ru: {
-    translation: ruMessages
+    translation: ruMessages,
   },
   ua: {
-    translation: uaMessages
-  }
+    translation: uaMessages,
+  },
 };

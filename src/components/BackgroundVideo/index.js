@@ -1,9 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import './BackgroundVideo.scss';
-import { PunkraftContext } from '../../App';
+import { usePunkraftBackground } from '../../utils/hooks/backgroundContext';
 
 const BackgroundVideo = () => {
-  const { video, lines } = useContext(PunkraftContext);
+  const { video, lines } = usePunkraftBackground();
   return (
     <>
       {video && (

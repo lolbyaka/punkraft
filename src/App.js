@@ -1,32 +1,32 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import './App.scss';
+import { PunkraftBackgroundCtx } from './utils/hooks/backgroundContext';
+import BackgroundVideo from './components/BackgroundVideo';
+import ContentContainer from './components/ContentContainer';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Home from './components/pages/Home';
+import Menu from './components/pages/Menu';
+import Events from './components/pages/Events';
+import Contacts from './components/pages/Contacts';
 
-import BackgroundVideo from './components/BackgroundVideo/BackgroundVideo';
-import ContentContainer from './components/ContentContainer/ContentContainer';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import Home from './components/pages/Home/Home';
-import Menu from './components/pages/Menu/Menu';
-import Events from './components/pages/Events/Events';
-import Contacts from './components/pages/Contacts/Contacts';
-
-export const PunkraftContext = React.createContext(null);
-
-function App() {
+const App = () => {
   const [video, setVideo] = useState(true);
   const [lines, setLines] = useState(true);
 
-  const toggleVideo = value => {
-    setVideo(value);
-  };
-
-  const toggleLines = value => {
-    setLines(value);
-  };
-
   return (
-    <PunkraftContext.Provider value={{ video, lines, toggleVideo, toggleLines }}>
+    <PunkraftBackgroundCtx.Provider
+      value={{
+        video,
+        lines,
+        toggleVideo: (value) => {
+          setVideo(value);
+        },
+        toggleLines: (value) => {
+          setLines(value);
+        },
+      }}
+    >
       <ContentContainer>
         <Header />
         <Switch>
@@ -38,7 +38,7 @@ function App() {
         <Footer />
       </ContentContainer>
       <BackgroundVideo />
-    </PunkraftContext.Provider>
+    </PunkraftBackgroundCtx.Provider>
   );
 }
 

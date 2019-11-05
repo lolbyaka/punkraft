@@ -9,7 +9,7 @@ export const animateWord = (clause, selectedWords, animationType, timings) => {
 export const splitClause = (clause, selectedWords) => {
   const content = clause.innerHTML;
   clause.innerHTML = '';
-  return content.split(' ').map((item, i) => {
+  return content.split(' ').map((item) => {
     const word = document.createElement('span');
     word.className = selectedWords.includes(item) ? 'word accent' : 'word';
     word.innerHTML = item;
@@ -22,10 +22,16 @@ export const changeClause = (
   clausesLenght,
   { clausesArray, currentClause },
   selectedWords,
-  nextIndex
+  nextIndex,
 ) => {
-  const clauseIndex =
-    nextIndex >= 0 ? nextIndex : currentClause === clausesLenght - 1 ? 0 : currentClause + 1;
+  let clauseIndex;
+  if (nextIndex >= 0) {
+    clauseIndex = nextIndex;
+  } else if (currentClause === clausesLenght - 1) {
+    clauseIndex = 0;
+  } else {
+    clauseIndex = currentClause + 1;
+  }
   const currentClauseArray = clausesArray[currentClause];
   const nextClauseArray = clausesArray[clauseIndex];
 

@@ -12,5 +12,5 @@ render(
       <App />
     </I18nextProvider>
   </BrowserRouter>,
-  document.getElementById('root')
+  document.getElementById('root'),
 );
