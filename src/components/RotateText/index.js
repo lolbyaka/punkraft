@@ -17,7 +17,7 @@ const RotateText = ({ clauses, selectedWords }) => {
     clausesArray,
   };
 
-  const changeNextClause = (nextIndex) => {
+  const changeNextClause = nextIndex => {
     if (mutateRef.current.currentClause !== nextIndex) {
       clearInterval(mutateRef.current.intervalId);
       setClause(
@@ -40,10 +40,12 @@ const RotateText = ({ clauses, selectedWords }) => {
         );
       }, 3000),
     );
+    return 'ha!';
   };
 
   useEffect(() => {
-    if (clausesRef.current[currentClause].childElementCount > 1) return;
+    if (clausesRef.current[currentClause].childElementCount > 1)
+      return;
     setClausesArray(
       clausesRef.current.map((item, i) => {
         const newItem = item;
@@ -66,7 +68,10 @@ const RotateText = ({ clauses, selectedWords }) => {
         {clauses.map((clause, i) => (
           <p
             key={i}
-            ref={(el) => (clausesRef.current[i] = el)}
+            ref={el => {
+              clausesRef.current[i] = el;
+              return null;
+            }}
             className="clause"
           >
             {clause}

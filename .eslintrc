@@ -1,5 +1,5 @@
 {
-  "extends": "airbnb",
+  "extends": ["airbnb", "prettier"],
   "parser": "babel-eslint",
   "env": {
     "browser": true,
@@ -7,11 +7,12 @@
     "es6": true,
     "jest": true
   },
-  "plugins": ["react", "jsx-a11y", "import"],
+  "plugins": ["react", "jsx-a11y", "import", "prettier"],
   "parserOptions": {
     "ecmaVersion": 6
   },
   "rules": {
+    "prettier/prettier": ["error"],
     "no-param-reassign": 0,
     "func-names": 0,
     "no-underscore-dangle": 0,

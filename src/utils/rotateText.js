@@ -1,4 +1,9 @@
-export const animateWord = (clause, selectedWords, animationType, timings) => {
+export const animateWord = (
+  clause,
+  selectedWords,
+  animationType,
+  timings,
+) => {
   setTimeout(() => {
     clause.className = selectedWords.includes(clause.textContent)
       ? `word ${animationType} accent`
@@ -9,9 +14,11 @@ export const animateWord = (clause, selectedWords, animationType, timings) => {
 export const splitClause = (clause, selectedWords) => {
   const content = clause.innerHTML;
   clause.innerHTML = '';
-  return content.split(' ').map((item) => {
+  return content.split(' ').map(item => {
     const word = document.createElement('span');
-    word.className = selectedWords.includes(item) ? 'word accent' : 'word';
+    word.className = selectedWords.includes(item)
+      ? 'word accent'
+      : 'word';
     word.innerHTML = item;
     clause.appendChild(word);
     return word;
@@ -40,7 +47,9 @@ export const changeClause = (
   });
 
   nextClauseArray.forEach((word, i) => {
-    word.className = selectedWords[currentClause].includes(word.textContent)
+    word.className = selectedWords[currentClause].includes(
+      word.textContent,
+    )
       ? 'word behind accent'
       : 'word behind';
     word.parentElement.style.opacity = 1;

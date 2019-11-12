@@ -13,8 +13,13 @@ const Menu = () => {
   const [menu, setMenu] = useState(null);
   const [filters, setFilters] = useState(null);
 
-  const toggleFilter = (filterKey) => {
-    setFilters(filters.map((filter) => ({ ...filter, active: filter.key === filterKey })));
+  const toggleFilter = filterKey => {
+    setFilters(
+      filters.map(filter => ({
+        ...filter,
+        active: filter.key === filterKey,
+      })),
+    );
   };
 
   useEffect(() => {
@@ -32,13 +37,16 @@ const Menu = () => {
     }
   }, [menu]);
 
-  const returnActiveFilter = () => filters.filter((item) => item.active)[0];
+  const returnActiveFilter = () =>
+    filters.filter(item => item.active)[0];
 
   return (
     <div className="menu-container">
       <h1>
         {t('menu')}
-        {!filters && !menu && <DashLoading size={40} stroke="#fb5d31" duration={1.6} />}
+        {!filters && !menu && (
+          <DashLoading size={40} stroke="#fb5d31" duration={1.6} />
+        )}
       </h1>
       {filters && menu && (
         <>

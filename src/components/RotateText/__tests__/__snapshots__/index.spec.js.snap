@@ -1,0 +1,39 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`components/<RotateText /> should render a RotateText 1`] = `
+<div
+  className="text"
+>
+  <p
+    className="clause"
+  >
+    We are craft beer bar in the heart of Kyiv with wide selection of beer.
+  </p>
+  <p
+    className="clause"
+  >
+    24 taps of draft beer and rich range of bottled one.
+  </p>
+  <p
+    className="clause"
+  >
+    Burgers, meat, fish, chips and other beer accompanying appetizers.
+  </p>
+  <div
+    className="dots"
+  >
+    <div
+      className="active dot"
+      onClick={[Function]}
+    />
+    <div
+      className="dot"
+      onClick={[Function]}
+    />
+    <div
+      className="dot"
+      onClick={[Function]}
+    />
+  </div>
+</div>
+`;

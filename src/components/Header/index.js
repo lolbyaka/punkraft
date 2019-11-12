@@ -24,9 +24,9 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const [langs, setLang] = useState(initLanguages);
 
-  const changeLanguage = (lng) => {
+  const changeLanguage = lng => {
     setLang(
-      langs.map((lang) => ({ ...lang, active: lang.key === lng })),
+      langs.map(lang => ({ ...lang, active: lang.key === lng })),
     );
     i18n.changeLanguage(lng);
   };
@@ -48,7 +48,7 @@ const Header = () => {
         </NavLink>
       </nav>
       <ul className="header__language">
-        {langs.map((lang) => (
+        {langs.map(lang => (
           <li key={lang.key}>
             <button
               type="button"

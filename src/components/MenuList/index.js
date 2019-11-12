@@ -10,7 +10,9 @@ const MenuList = ({ menu, activeFilter }) => {
   useEffect(() => {
     setFilteredMenu(
       menu.filter(
-        (menuItem) => menuItem.category === (activeFilter ? activeFilter.key : 'beer'),
+        menuItem =>
+          menuItem.category ===
+          (activeFilter ? activeFilter.key : 'beer'),
       ),
     );
   }, [activeFilter]);
@@ -36,7 +38,7 @@ const MenuList = ({ menu, activeFilter }) => {
         >
           <div className="content">
             <div className="item-title">{filteredMenu[i].title}</div>
-            {filteredMenu[i].items.map((itemContent) => (
+            {filteredMenu[i].items.map(itemContent => (
               <div className="item-position" key={itemContent.id}>
                 <h2>
                   {itemContent.title}
@@ -45,7 +47,7 @@ const MenuList = ({ menu, activeFilter }) => {
                     UAH
                   </span>
                 </h2>
-                {itemContent.content.map((content) => (
+                {itemContent.content.map(content => (
                   <p key={content.id}>{content}</p>
                 ))}
               </div>

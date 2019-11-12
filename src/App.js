@@ -19,10 +19,10 @@ const App = () => {
       value={{
         video,
         lines,
-        toggleVideo: (value) => {
+        toggleVideo: value => {
           setVideo(value);
         },
-        toggleLines: (value) => {
+        toggleLines: value => {
           setLines(value);
         },
       }}

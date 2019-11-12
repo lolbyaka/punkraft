@@ -14,7 +14,10 @@ const Home = () => {
   }, []);
   return (
     <div className="home-content">
-      <RotateText clauses={t('titles', { returnObjects: true })} selectedWords={selectedWords} />
+      <RotateText
+        clauses={t('titles', { returnObjects: true })}
+        selectedWords={selectedWords}
+      />
       <a href="/" className="reserve">
         забронювати стіл
       </a>

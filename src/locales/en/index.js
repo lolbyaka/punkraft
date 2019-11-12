@@ -7,7 +7,11 @@ const messages = {
     '24 taps of draft beer and rich range of bottled one.',
     'Burgers, meat, fish, chips and other beer accompanying appetizers.',
   ],
-  selectedWords: [['craft', 'beer', 'bar'], ['24', 'taps'], ['beer', 'accompaning']],
+  selectedWords: [
+    ['craft', 'beer', 'bar'],
+    ['24', 'taps'],
+    ['beer', 'accompaning'],
+  ],
 };
 
 export default messages;
