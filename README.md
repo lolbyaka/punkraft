@@ -1,2 +1,2 @@
 ## Best bar in kiyv
-[![CircleCI](https://circleci.com/gh/lolbyaka/punkraft/tree/master.svg?style=svg)](https://circleci.com/gh/lolbyaka/punkraft/tree/master)
+[![CircleCI](https://circleci.com/gh/lolbyaka/punkraft/tree/master.svg?style=svg&circle-token=d2dbc141a76d93180140479408f3bc3698553f61)](https://circleci.com/gh/lolbyaka/punkraft/tree/master)
