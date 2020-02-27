@@ -57,7 +57,7 @@
     "eslint-plugin-react": "^7.14.3",
     "firebase-tools": "^7.7.0",
     "prettier": "^1.18.2",
-    "react-test-renderer": "^16.11.0"
+    "react-test-renderer": "^16.13.0"
   },
   "resolutions": {
     "eslint-loader": "3.0.2"
